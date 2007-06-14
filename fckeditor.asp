@@ -187,9 +187,20 @@ Class FCKeditor
 	End Function
 
 	Private Function EncodeConfig( valueToEncode )
-		EncodeConfig = Replace( valueToEncode, "&", "%26" )
-		EncodeConfig = Replace( EncodeConfig , "=", "%3D" )
-		EncodeConfig = Replace( EncodeConfig , """", "%22" )
+		' The locale of the asp server makes the conversion of a boolean to string different to "true" or "false"
+		' so we must do it manually
+    If vartype(valueToEncode) = vbBoolean then 
+			If valueToEncode=True Then
+				EncodeConfig="True"
+			Else
+				EncodeConfig="False"
+			End If 
+		Else
+			EncodeConfig = Replace( valueToEncode, "&", "%26" )
+			EncodeConfig = Replace( EncodeConfig , "=", "%3D" )
+			EncodeConfig = Replace( EncodeConfig , """", "%22" )
+		End if                           
+
 	End Function
 
 End Class
