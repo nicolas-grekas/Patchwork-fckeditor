@@ -71,7 +71,7 @@ function ChangeToolbar( toolbarName )
 	var('myeditor') = fck_editor(
 		-instancename='FCKeditor1',
 		-basepath=$basepath,
-		-initialvalue='This is some <strong>sample text</strong>. You are using <a href="http://www.fckeditor.net/">FCKeditor</a>.'
+		-initialvalue='<p>This is some <strong>sample text</strong>. You are using <a href="http://www.fckeditor.net/">FCKeditor</a>.</p>'
 	);
 
 	if(action_param('Toolbar'));

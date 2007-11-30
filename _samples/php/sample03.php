@@ -79,7 +79,7 @@ $oFCKeditor->BasePath = $sBasePath ;
 if ( isset($_GET['Toolbar']) )
 	$oFCKeditor->ToolbarSet = htmlspecialchars($_GET['Toolbar']);
 
-$oFCKeditor->Value = 'This is some <strong>sample text</strong>. You are using <a href="http://www.fckeditor.net/">FCKeditor</a>.' ;
+$oFCKeditor->Value = '<p>This is some <strong>sample text</strong>. You are using <a href="http://www.fckeditor.net/">FCKeditor</a>.</p>' ;
 $oFCKeditor->Create() ;
 ?>
 			<br>

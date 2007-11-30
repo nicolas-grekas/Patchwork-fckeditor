@@ -56,7 +56,7 @@ foreach ( $postArray as $sForm => $value )
 ?>
 			<tr>
 				<td valign="top" nowrap><b><?=$sForm?></b></td>
-				<td width="100%"><?=$postedValue?></td>
+				<td width="100%" style="white-space:pre"><?=$postedValue?></td>
 			</tr>
 <?php
 }

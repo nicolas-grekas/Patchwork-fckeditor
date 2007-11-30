@@ -149,7 +149,7 @@ _HTML_TAG_
 		$Config{'AutoDetectLanguage'}	= "true";
 		$Config{'DefaultLanguage'}		= 'en' ;
 	}
-	$Value = 'This is some <strong>sample text</strong>. You are using <a href="http://www.fckeditor.net/">FCKeditor</a>.' ;
+	$Value = '<p>This is some <strong>sample text</strong>. You are using <a href="http://www.fckeditor.net/">FCKeditor</a>.</p>' ;
 	&Create();
 
 	print <<"_HTML_TAG_";

@@ -42,7 +42,7 @@
 [iterate(client_postparams, local('this'))]
 			<tr>
 				<td valign="top" nowrap><b>[#this->first]</b></td>
-				<td width="100%">[#this->second]</td>
+				<td width="100%" style="white-space:pre">[#this->second]</td>
 			</tr>
 [/iterate]
 		</table>

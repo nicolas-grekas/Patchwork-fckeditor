@@ -97,7 +97,7 @@ function ChangeLanguage( languageCode )
 		-instancename='FCKeditor1',
 		-basepath=$basepath,
 		-config=$config,
-		-initialvalue='This is some <strong>sample text</strong>. You are using <a href="http://www.fckeditor.net/">FCKeditor</a>.'
+		-initialvalue='<p>This is some <strong>sample text</strong>. You are using <a href="http://www.fckeditor.net/">FCKeditor</a>.</p>'
 	);
 
 	$myeditor->create;

@@ -94,7 +94,7 @@ _HTML_TAG_
 		print <<"_HTML_TAG_";
 			<tr>
 				<td valign="top" nowrap><b>$key</b></td>
-				<td width="100%">$postedValue</td>
+				<td width="100%" style="white-space:pre">$postedValue</td>
 			</tr>
 _HTML_TAG_
 	}
