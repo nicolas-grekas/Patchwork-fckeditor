@@ -286,7 +286,7 @@ FCKEnterKey.prototype._ExecuteBackspace = function( range, previous, currentBloc
 			// Set the range to the end of the previous element and bookmark it.
 			range.SetStart( previous, 2, true ) ;
 			range.Collapse( true ) ;
-			var oBookmark = range.CreateBookmark() ;
+			var oBookmark = range.CreateBookmark( true ) ;
 
 			// Move the contents of the block to the previous element and delete it.
 			// But for some block types (e.g. table), moving the children to the previous block makes no sense.
@@ -295,8 +295,7 @@ FCKEnterKey.prototype._ExecuteBackspace = function( range, previous, currentBloc
 				FCKDomTools.MoveChildren( currentBlock, previous ) ;
 
 			// Place the selection at the bookmark.
-			range.MoveToBookmark( oBookmark ) ;
-			range.Select() ;
+			range.SelectBookmark( oBookmark ) ;
 
 			bCustom = true ;
 		}
@@ -337,7 +336,7 @@ FCKEnterKey.prototype.DoDelete = function()
 		var eCurrentCell = FCKTools.GetElementAscensor( oCurrentBlock, 'td' );
 
 		var eNext = FCKDomTools.GetNextSourceElement( oCurrentBlock, true, [ oRange.StartBlockLimit.nodeName ],
-				['UL','OL','TR'] ) ;
+				['UL','OL','TR'], true ) ;
 
 		// Bug #1323 : if we're in a table cell, and the next node belongs to a different cell, then don't
 		// delete anything.

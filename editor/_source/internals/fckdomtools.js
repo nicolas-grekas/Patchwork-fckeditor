@@ -242,9 +242,9 @@ var FCKDomTools =
 	 *		@param {string[]} ignoreElements An array of element names that
 	 *				must be ignored during the search.
 	 */
-	GetNextSourceElement : function( currentNode, ignoreSpaceTextOnly, stopSearchElements, ignoreElements )
+	GetNextSourceElement : function( currentNode, ignoreSpaceTextOnly, stopSearchElements, ignoreElements, startFromSibling )
 	{
-		while( ( currentNode = this.GetNextSourceNode( currentNode, false ) ) )	// Only one "=".
+		while( ( currentNode = this.GetNextSourceNode( currentNode, startFromSibling ) ) )	// Only one "=".
 		{
 			if ( currentNode.nodeType == 1 )
 			{

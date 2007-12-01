@@ -41,7 +41,7 @@ function InitializeAPI()
 		var sScript =
 			'var FCKeditorAPI = {' +
 				'Version : "2.5",' +
-				'VersionBuild : "17350",' +
+				'VersionBuild : "17352",' +
 				'__Instances : new Object(),' +
 
 				'GetInstance : function( name )' +
