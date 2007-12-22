@@ -1,4 +1,5 @@
-<%@ Page language="c#" Trace="false" Inherits="FredCK.FCKeditorV2.FileBrowserConnector" AutoEventWireup="false" %>
+<%@ Page Language="c#" Trace="false" Inherits="FredCK.FCKeditorV2.FileBrowser.Connector" AutoEventWireup="false" %>
+<%@ Register Src="config.ascx" TagName="Config" TagPrefix="FCKeditor" %>
 <%--
  * FCKeditor - The text editor for Internet - http://www.fckeditor.net
  * Copyright (C) 2003-2007 Frederico Caldeira Knabben
@@ -28,3 +29,4 @@
  * To download the FCKeditor.Net package, go to our official web site:
  * http://www.fckeditor.net
 --%>
+<FCKeditor:Config id="Config" runat="server"></FCKeditor:Config>
