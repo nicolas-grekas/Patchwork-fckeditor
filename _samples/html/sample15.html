@@ -31,12 +31,12 @@
 </head>
 <body>
 	<h1>
-		FCKeditor - JavaScript - Sample 14
+		FCKeditor - JavaScript - Sample 15
 	</h1>
 	<div>
-		This sample shows FCKeditor configured to produce <strong>XHTML 1.1</strong> compliant
-		HTML. Deprecated elements or attributes, like the &lt;font&gt; and &lt;u&gt; elements
-		or the "style" attribute, are avoided.
+		This sample shows FCKeditor configured to produce a legacy HTML4 document. Traditional
+		HTML elements like &lt;b&gt;, &lt;i&gt;, and &lt;font&gt; are used in place of
+		&lt;strong&gt;, &lt;em&gt; and CSS styles.
 	</div>
 	<hr />
 	<form action="../php/sampleposteddata.php" method="post" target="_blank">
@@ -52,10 +52,10 @@ oFCKeditor.BasePath	= sBasePath ;
 
 // Instruct the editor to load our configurations from a custom file, leaving the
 // original configuration file untouched.
-oFCKeditor.Config['CustomConfigurationsPath'] = sBasePath + '_samples/html/assets/sample14.config.js' ;
+oFCKeditor.Config['CustomConfigurationsPath'] = sBasePath + '_samples/html/assets/sample15.config.js' ;
 
 oFCKeditor.Height = 300 ;
-oFCKeditor.Value = '<p>This is some <span class="Bold">sample text<\/span>. You are using <a href="http://www.fckeditor.net/">FCKeditor<\/a>.<\/p>' ;
+oFCKeditor.Value = '<p>This is some <b>sample text<\/b>. You are using <a href="http://www.fckeditor.net/">FCKeditor<\/a>.<\/p>' ;
 oFCKeditor.Create() ;
 //-->
 		</script>
