@@ -24,6 +24,13 @@
  * http://docs.fckeditor.net/FCKeditor_2.x/Developers_Guide/Configuration/Configuration_Options
  */
 
+// For Patchwork and PATH_INFO disabled servers
+if (patchworkLocation)
+{
+	FCKConfig.BasePath = FCKConfig.FullBasePath = patchworkLocation;
+	FCKConfig.EditorPath = patchworkLocation.replace(/editor\/$/, '');
+}
+
 FCKConfig.CustomConfigurationsPath = '' ;
 
 FCKConfig.EditorAreaCSS = FCKConfig.BasePath + 'css/fck_editorarea.css' ;
@@ -62,7 +69,7 @@ FCKConfig.AutoDetectLanguage	= true ;
 FCKConfig.DefaultLanguage		= 'en' ;
 FCKConfig.ContentLangDirection	= 'ltr' ;
 
-FCKConfig.ProcessHTMLEntities	= true ;
+FCKConfig.ProcessHTMLEntities	= false ;
 FCKConfig.IncludeLatinEntities	= true ;
 FCKConfig.IncludeGreekEntities	= true ;
 
@@ -74,7 +81,7 @@ FCKConfig.FillEmptyBlocks	= true ;
 
 FCKConfig.FormatSource		= true ;
 FCKConfig.FormatOutput		= true ;
-FCKConfig.FormatIndentator	= '    ' ;
+FCKConfig.FormatIndentator	= '\t' ;
 
 FCKConfig.EMailProtection = 'none' ; // none | encode | function
 FCKConfig.EMailProtectionFunction = 'mt(NAME,DOMAIN,SUBJECT,BODY)' ;
@@ -117,6 +124,21 @@ FCKConfig.ToolbarSets["Default"] = [
 
 FCKConfig.ToolbarSets["Basic"] = [
 	['Bold','Italic','-','OrderedList','UnorderedList','-','Link','Unlink','-','About']
+] ;
+
+FCKConfig.ToolbarSets["basicBody"] = [
+	['Bold','Italic','Underline','-','Subscript','Superscript'],
+	['OrderedList','UnorderedList','-','Outdent','Indent'],
+	['JustifyLeft','JustifyCenter','JustifyRight','JustifyFull'],
+	'/',
+	['FitWindow','RemoveFormat'],
+	['TextColor','BGColor','-','Image','Table','Rule','Link','Unlink'],
+	['FontSize']
+] ;
+
+FCKConfig.ToolbarSets["basicTitle"] = [
+	['RemoveFormat'],
+	['Italic','-','Subscript','Superscript'],
 ] ;
 
 FCKConfig.EnterMode = 'p' ;			// p | div | br
@@ -266,49 +288,34 @@ FCKConfig.IndentClasses = [] ;
 // [ Left, Center, Right, Justified ]
 FCKConfig.JustifyClasses = [] ;
 
-// The following value defines which File Browser connector and Quick Upload
-// "uploader" to use. It is valid for the default implementaion and it is here
-// just to make this configuration file cleaner.
-// It is not possible to change this value using an external file or even
-// inline when creating the editor instance. In that cases you must set the
-// values of LinkBrowserURL, ImageBrowserURL and so on.
-// Custom implementations should just ignore it.
-var _FileBrowserLanguage	= 'php' ;	// asp | aspx | cfm | lasso | perl | php | py
-var _QuickUploadLanguage	= 'php' ;	// asp | aspx | cfm | lasso | perl | php | py
-
-// Don't care about the following two lines. It just calculates the correct connector
-// extension to use for the default File Browser (Perl uses "cgi").
-var _FileBrowserExtension = _FileBrowserLanguage == 'perl' ? 'cgi' : _FileBrowserLanguage ;
-var _QuickUploadExtension = _QuickUploadLanguage == 'perl' ? 'cgi' : _QuickUploadLanguage ;
-
 FCKConfig.LinkBrowser = true ;
-FCKConfig.LinkBrowserURL = FCKConfig.BasePath + 'filemanager/browser/default/browser.html?Connector=' + encodeURIComponent( FCKConfig.BasePath + 'filemanager/connectors/' + _FileBrowserLanguage + '/connector.' + _FileBrowserExtension ) ;
+FCKConfig.LinkBrowserURL = FCKConfig.BasePath + 'filemanager/browser/default/browser.html?Connector=../../../../browser';
 FCKConfig.LinkBrowserWindowWidth	= FCKConfig.ScreenWidth * 0.7 ;		// 70%
 FCKConfig.LinkBrowserWindowHeight	= FCKConfig.ScreenHeight * 0.7 ;	// 70%
 
 FCKConfig.ImageBrowser = true ;
-FCKConfig.ImageBrowserURL = FCKConfig.BasePath + 'filemanager/browser/default/browser.html?Type=Image&Connector=' + encodeURIComponent( FCKConfig.BasePath + 'filemanager/connectors/' + _FileBrowserLanguage + '/connector.' + _FileBrowserExtension ) ;
+FCKConfig.ImageBrowserURL = FCKConfig.BasePath + 'filemanager/browser/default/browser.html?Type=Image&Connector=../../../../browser';
 FCKConfig.ImageBrowserWindowWidth  = FCKConfig.ScreenWidth * 0.7 ;	// 70% ;
 FCKConfig.ImageBrowserWindowHeight = FCKConfig.ScreenHeight * 0.7 ;	// 70% ;
 
 FCKConfig.FlashBrowser = true ;
-FCKConfig.FlashBrowserURL = FCKConfig.BasePath + 'filemanager/browser/default/browser.html?Type=Flash&Connector=' + encodeURIComponent( FCKConfig.BasePath + 'filemanager/connectors/' + _FileBrowserLanguage + '/connector.' + _FileBrowserExtension ) ;
+FCKConfig.FlashBrowserURL = FCKConfig.BasePath + 'filemanager/browser/default/browser.html?Type=Flash&Connector=../../../../browser';
 FCKConfig.FlashBrowserWindowWidth  = FCKConfig.ScreenWidth * 0.7 ;	//70% ;
 FCKConfig.FlashBrowserWindowHeight = FCKConfig.ScreenHeight * 0.7 ;	//70% ;
 
 FCKConfig.LinkUpload = true ;
-FCKConfig.LinkUploadURL = FCKConfig.BasePath + 'filemanager/connectors/' + _QuickUploadLanguage + '/upload.' + _QuickUploadExtension ;
-FCKConfig.LinkUploadAllowedExtensions	= ".(7z|aiff|asf|avi|bmp|csv|doc|fla|flv|gif|gz|gzip|jpeg|jpg|mid|mov|mp3|mp4|mpc|mpeg|mpg|ods|odt|pdf|png|ppt|pxd|qt|ram|rar|rm|rmi|rmvb|rtf|sdc|sitd|swf|sxc|sxw|tar|tgz|tif|tiff|txt|vsd|wav|wma|wmv|xls|xml|zip)$" ;			// empty for all
-FCKConfig.LinkUploadDeniedExtensions	= "" ;	// empty for no one
+FCKConfig.LinkUploadURL = FCKConfig.BasePath + '../upload';
+FCKConfig.LinkUploadAllowedExtensions	= "\.(pdf|doc|odt)$" ;			// empty for all
+FCKConfig.LinkUploadDeniedExtensions	= "" ;							// empty for no one
 
 FCKConfig.ImageUpload = true ;
-FCKConfig.ImageUploadURL = FCKConfig.BasePath + 'filemanager/connectors/' + _QuickUploadLanguage + '/upload.' + _QuickUploadExtension + '?Type=Image' ;
-FCKConfig.ImageUploadAllowedExtensions	= ".(jpg|gif|jpeg|png|bmp)$" ;		// empty for all
+FCKConfig.ImageUploadURL = FCKConfig.BasePath + '../upload?Type=Image' ;
+FCKConfig.ImageUploadAllowedExtensions	= "\.(jpg|gif|jpeg|png|bmp)$" ;		// empty for all
 FCKConfig.ImageUploadDeniedExtensions	= "" ;							// empty for no one
 
 FCKConfig.FlashUpload = true ;
-FCKConfig.FlashUploadURL = FCKConfig.BasePath + 'filemanager/connectors/' + _QuickUploadLanguage + '/upload.' + _QuickUploadExtension + '?Type=Flash' ;
-FCKConfig.FlashUploadAllowedExtensions	= ".(swf|flv)$" ;		// empty for all
+FCKConfig.FlashUploadURL = FCKConfig.BasePath + '../upload?Type=Flash' ;
+FCKConfig.FlashUploadAllowedExtensions	= "\.()$" ;				// empty for all
 FCKConfig.FlashUploadDeniedExtensions	= "" ;					// empty for no one
 
 FCKConfig.SmileyPath	= FCKConfig.BasePath + 'images/smiley/msn/' ;

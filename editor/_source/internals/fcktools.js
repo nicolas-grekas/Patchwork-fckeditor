@@ -115,7 +115,7 @@ FCKTools.GetStyleHtml = (function()
 			return '' ;
 
 		var temp = markTemp ? ' _fcktemp="true"' : '' ;
-		return '<' + 'link href="' + cssFileUrl + '" type="text/css" rel="stylesheet" ' + temp + '/>' ;
+		return '<' + 'link href="' + patchworkRelocate(cssFileUrl) + '" type="text/css" rel="stylesheet" ' + temp + '/>' ;
 	}
 
 	return function( cssFileOrArrayOrDef, markTemp )

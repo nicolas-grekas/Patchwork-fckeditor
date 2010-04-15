@@ -88,7 +88,7 @@ var FCKDialog = ( function()
 			var dialogInfo =
 			{
 				Title : dialogTitle,
-				Page : dialogPage,
+				Page : patchworkRelocate(dialogPage),
 				Editor : window,
 				CustomValue : customValue,		// Optional
 				TopWindow : topWindow

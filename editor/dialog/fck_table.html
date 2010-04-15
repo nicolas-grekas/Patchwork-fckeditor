@@ -39,7 +39,7 @@ var table ;
 var e = dialog.Selection.GetSelectedElement() ;
 var hasColumnHeaders ;
 
-if ( ( !e && document.location.search.substr(1) == 'Parent' ) || ( e && e.tagName != 'TABLE' ) )
+if ( ( !e && /\?Parent$/.test(document.location.search) ) || ( e && e.tagName != 'TABLE' ) )
 	e = oEditor.FCKSelection.MoveToAncestorNode( 'TABLE' ) ;
 
 if ( e && e.tagName == "TABLE" )
